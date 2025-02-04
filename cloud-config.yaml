@@ -1,0 +1,15 @@
+#cloud-config
+users:
+  - name: web
+    primary_group: web
+    groups: wheel
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCdshoUWZUipSV4IVRHhD/xYs2DV667Z7Ky+gyFgtd7m3nrksPu3hKMJ7AiWR6gySrWaIv+gvBIfd8zRlijeax+DgaVk9icIl4kwVe13qcd0pgwcCTbtw40LjHVMqymxFqKdAqA/FbrCWm16TqTWk/2xcAqxcafcJgjblJCYMRekGdPcBMljaQRr7fnw2rVKo++jfiDU8HRdN7w226uxPl5yiUI8H5gpxDpe6qsESAF753KsRGbznzzWjEAFfD4aTgZPc/4HyX3hJ/9I1ky4uZFhHmL1JMDun1tbR+DKRsnfZnwLjuEZD9bP9+NBmvt8BHSa3lUJ1TzW0FGRgHVCvFEaf2D+1gdU8LcI9aoLChxPseLJhTczkiKUplc6eaN4RH5wueX6BC2vCi20yf22d4N2VWgCJccJji7Ya5BT62t8Ze1ohWyG+kHxN22RvMvf27T6uKVsJk/fmD+p4SWwwsUulwyRNFl73azCqfeo7rYRVs7dypwBFi7Ys71iyr92l8= cloud-init
+packages:
+  - nginx
+  - nmap
+
+runcmd:
+  - systemctl enable --now nginx
